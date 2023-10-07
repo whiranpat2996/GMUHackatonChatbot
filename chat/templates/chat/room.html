@@ -27,12 +27,16 @@
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
             document.querySelector('#chat-log').value += (data.message + '\n');
-            if(data.message){
+            //use data.message.includes([string here]) for specific case scenarios
+            if(data.message.includes('wow')){
                 document.querySelector('#chat-log').value += "Sure, here are links related to your question!" + '\n' 
                 + 'https://recreation.gmu.edu/facilities/rac/' + '\n' + 'https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/' + '\n'
                 + 'https://recreation.gmu.edu/memberships/equipment-reservations/' + '\n'
             }
-            else{document.querySelector('#chat-log').value += 'Sorry, we cannot understand. Please rephrase your question.' + '\n'}
+            //TODO: Make this a generative use case
+            else{
+                document.querySelector('#chat-log').value += 'Sorry, we cannot understand. Please rephrase your question.' + '\n'
+            }
         };
 
         chatSocket.onclose = function(e) {
