@@ -16,7 +16,7 @@ def main():
             "Parking": [(blockLength * 18.7) + 80, (blockWidth * 7.6) + 35]}
 
   im = Image.open(r"chat/map.jpg") 
-  pin = Image.open(r"chat/Pin.png")
+  pin = Image.open(r"chat/Pin.jpeg")
   pinWidth = 290
 
 
