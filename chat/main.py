@@ -15,7 +15,7 @@ coorSys = {"Johnson Center": [(blockLength * 16.5) + 80, (blockWidth * 6.5) + 35
            "Parking": [(blockLength * 18.7) + 80, (blockWidth * 7.6) + 35]}
 
 im = Image.open(r"map.jpg") 
-pin = Image.open(r"pin.png")
+pin = Image.open(r"Pin.png")
 pinWidth = 290
 
 
