@@ -5,7 +5,7 @@
     <title>Chat Room</title>
 </head>
 <body>
-    <textarea id="chat-log" cols="150" rows="50"></textarea><br>
+    <textarea id="chat-log" cols="100" rows="50"></textarea><br>
     <input id="chat-message-input" type="text" size="100"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
@@ -26,14 +26,31 @@
         //after any message is sent
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
+            data.message = data.message.toLowerCase()
             document.querySelector('#chat-log').value += (data.message + '\n');
             //use data.message.includes([string here]) for specific case scenarios
-            if(data.message.includes('wow')){
+            
+            if(data.message.includes(["lift" || "workout"])){
                 document.querySelector('#chat-log').value += "Sure, here are links related to your question!" + '\n' 
                 + 'https://recreation.gmu.edu/facilities/rac/' + '\n' + 'https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/' + '\n'
                 + 'https://recreation.gmu.edu/memberships/equipment-reservations/' + '\n'
             }
-            //TODO: Make this a generative use case
+            else if(data.message.includes(["swim"])){
+                document.querySelector('#chat-log').value += "Sure, here are links related to your question:" + '\n' + "https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/" + '\n' + 'Do not swim in the pond!' + '\n'
+            }
+            else if(data.message.includes(["regist"])){
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://registrar.gmu.edu/students/" + '\n'
+            }
+            else if(data.message.includes(["din"])){
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://masondining.sodexomyway.com/" + '\n' + 'https://www.gmu.edu/student-life/where-eat' + '\n'
+            }
+            else if(data.message.includes(["park"])){
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://transportation.gmu.edu/parking/" + '\n'
+            }
+            else if(data.message.includes["class"]){
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: " + '\n' + 'https://catalog.gmu.edu/courses/'
+            }
+            //TODO: Make this a generative AI use case... eventually
             else{
                 document.querySelector('#chat-log').value += 'Sorry, we cannot understand. Please rephrase your question.' + '\n'
             }
