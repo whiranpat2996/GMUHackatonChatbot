@@ -22,6 +22,7 @@
 
         //startup
         document.querySelector('#chat-log').value += 'Hello, how may I help you today?' + '\n'
+        
 
         //after any message is sent
         chatSocket.onmessage = function(e) {
@@ -33,22 +34,22 @@
             if(data.message.includes(["lift" || "workout"])){
                 document.querySelector('#chat-log').value += "Sure, here are links related to your question!" + '\n' 
                 + 'https://recreation.gmu.edu/facilities/rac/' + '\n' + 'https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/' + '\n'
-                + 'https://recreation.gmu.edu/memberships/equipment-reservations/' + '\n'
+                + 'https://recreation.gmu.edu/memberships/equipment-reservations/' + '\n\n'
             }
             else if(data.message.includes(["swim"])){
-                document.querySelector('#chat-log').value += "Sure, here are links related to your question:" + '\n' + "https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/" + '\n' + 'Do not swim in the pond!' + '\n'
+                document.querySelector('#chat-log').value += "Sure, here are links related to your question:" + '\n' + "https://recreation.gmu.edu/facilities/aquatic-and-fitness-center/" + '\n\n' + 'Do not swim in the pond!' + '\n\n'
             }
             else if(data.message.includes(["regist"])){
-                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://registrar.gmu.edu/students/" + '\n'
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://registrar.gmu.edu/students/" + '\n\n'
             }
             else if(data.message.includes(["din"])){
-                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://masondining.sodexomyway.com/" + '\n' + 'https://www.gmu.edu/student-life/where-eat' + '\n'
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://masondining.sodexomyway.com/" + '\n' + 'https://www.gmu.edu/student-life/where-eat' + '\n\n'
             }
             else if(data.message.includes(["park"])){
-                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://transportation.gmu.edu/parking/" + '\n'
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: https://transportation.gmu.edu/parking/" + '\n\n'
             }
             else if(data.message.includes["class"]){
-                document.querySelector('#chat-log').value += "Sure, here's a link to your question: " + '\n' + 'https://catalog.gmu.edu/courses/'
+                document.querySelector('#chat-log').value += "Sure, here's a link to your question: " + '\n' + 'https://catalog.gmu.edu/courses/' + '\n\n'
             }
             //TODO: Make this a generative AI use case... eventually
             else{
